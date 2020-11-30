@@ -1,9 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Wrap, ListWrap, ListDiv, SearchBigName, SearchSmallName, SubwaSpan, SearchSameName } from './Styled';
+import { Wrap, ListWrap, ListDiv, SearchBigName, SearchSmallName, SubwaySpan, SearchSameName } from './Styled';
 
 function SearchList({ searchValue }) {
-  const { subway, officetel, apt } = useSelector(list => list.search);
+  const { subway, officetel, apt, list } = useSelector(list => list.search);
+  // console.log("LIST" , list)
   return (
     <Wrap>
       <ListWrap >
@@ -13,7 +14,7 @@ function SearchList({ searchValue }) {
               <SearchSameName searchValue={searchValue} dataName={data.name}>{data.name}</SearchSameName>
               {data.subways.map((data, idx) => {
                 return (
-                  <SubwaSpan key={idx} color={data.color}>{data.shortName}</SubwaSpan>
+                  <SubwaySpan key={idx} color={data.color}>{data.shortName}</SubwaySpan>
                 )
               })}
             </ListDiv>

@@ -1,3 +1,4 @@
+import produce from 'immer';
 const axios = require('axios');
 
 export const search = {
@@ -7,7 +8,20 @@ export const search = {
     apt: []
   },
   reducers: {
-    findeSearchTwo(state, payload) {
+    initState(state, payload) {
+      let tmpSubway = [];
+      let tmpOfficetel = [];
+      let tmpApt = [];
+
+      state = {
+        subway: tmpSubway,
+        officetel: tmpOfficetel,
+        apt: tmpApt
+      };
+
+      return state;
+    },
+    findeSearchList(state, payload) {
       let tmpSubway = [];
       let tmpOfficetel = [];
       let tmpApt = [];
@@ -28,7 +42,7 @@ export const search = {
     async findSearch(payload, rootState) {
       const { keyword } = payload;
       const res = await axios.get(`/api/3/loc/keyword?api_version=3.0.1&keyword=${keyword}`);
-      dispatch.search.findeSearchTwo(res.data);
+      dispatch.search.findeSearchList(res.data);
     }
   })
 };

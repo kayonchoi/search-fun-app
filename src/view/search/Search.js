@@ -13,13 +13,26 @@ function Search() {
 
   const handleChage = e => {
     setInputValue(e.currentTarget.value);
-    setClickInput(true);
+    if (inputValue === '') {
+      setClickInput(false);
+    } else {
+      setClickInput(true);
+    }
   };
+
+  const handleBuried = () => {
+    console.log("handleBuried");
+  }
+
+  const handleParcelout = () => {
+    console.log("handleParcelout");
+  }
 
   useEffect(() => {
     if (value !== '') {
       dispatch.search.findSearch({ keyword: value });
     } else {
+      dispatch.search.initState();
       setClickInput(false);
     }
   }, [value]);
@@ -27,8 +40,8 @@ function Search() {
   return (
     <Header>
       <ListTitleDiv>
-        <SearchTitle>매몰</SearchTitle>
-        <SearchTitle>분양</SearchTitle>
+        <SearchTitle onClick={handleBuried}>매몰</SearchTitle>
+        <SearchTitle onClick={handleParcelout}>분양</SearchTitle>
         <InputDiv>
           <SearchSVG />
           <SearchInput type="text" value={inputValue} onChange={handleChage} />

@@ -9,21 +9,23 @@ export const Header = styled.div`
 
 export const SearchInput = styled.input`
     margin:  0 auto;
-    padding: 15px;
     border-radius: 3px;
     border : none;
     display: block;
     width: 1250px;
     outline: none;
+    font-size: 18px;
 `
-export const SearchTitle = styled.span`
+export const SearchTitle = styled.div`
   width: 30px;
   height: 24px;
   margin: 0 24px 8px 0;
   font-size: 16px;
   color: white;
-  border-bottom : 1px solid white;
+  border-bottom : 3px solid white;
   padding-bottom: 7px;
+  display : inline;
+  cursor:pointer;
 `
 
 export const ListTitleDiv = styled.div`
@@ -61,7 +63,7 @@ export const SearchTitleDiv = styled.div`
 
 export const TitleName = styled.div`
     padding: 30px 40px 0px;
-    font-size: 17px; 
+    font-size: 16px; 
     font-weight: bold;
     flex-grow: 1;
     flex-shrink: 1;

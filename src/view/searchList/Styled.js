@@ -19,29 +19,32 @@ export const ListWrap = styled.div`
 `
 export const ListDiv = styled.div`
     height: 30px;
-    padding: 25px 0px 0px 0px;
+    padding: 10px 0;
 `
 export const SearchBigName = styled.p`
   font-size : 15px;
+  color : #312828;;
 `
 
 export const SearchSameName = styled.p`
   display : inline;
-  color: ${props => props.searchValue === props.dataName ? 'red' : 'black'};
+  color: ${props => props.searchValue === props.dataName ?  '#6865f3' : '#949494'};
 `
 
 export const SearchSmallName = styled.pre`
   font-size : 13px;
+  color : #949494;
 `
 
-export const SubwaSpan = styled.span`
+export const SubwaySpan = styled.span`
   border : 1px solid;
   background-color : ${props => props.color};
-  border-radius: 22%;
+  border-radius: 50%;
   color: white;
   margin: 0px 0px 0px 10px;
   font-size: 13px;
   padding: 4px;
+  pointer-events: none;
 `
 
 
