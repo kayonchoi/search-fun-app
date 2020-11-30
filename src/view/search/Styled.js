@@ -1,54 +1,55 @@
 import styled from 'styled-components';
 
 export const Header = styled.div`
-  position : relative;
   margin: 0 0 70px;
   padding: 140px 250px 5px;
   background-image: linear-gradient(116deg, #13b7cf 0%, #365bb4 47%, #365bb4 47%);
-`
+  position : relative;
+`;
 
 export const SearchInput = styled.input`
-    margin:  0 auto;
-    border-radius: 3px;
-    border : none;
     display: block;
     width: 1250px;
-    outline: none;
+    margin:  0 auto;
     font-size: 18px;
-`
+    border : none;
+    border-radius: 3px;
+    outline: none;
+`;
+
 export const SearchTitle = styled.div`
+  display : inline;
   width: 30px;
   height: 24px;
   margin: 0 24px 8px 0;
-  font-size: 16px;
-  color: white;
-  border-bottom : 3px solid white;
   padding-bottom: 7px;
-  display : inline;
+  color: white;
+  font-size: 16px;
+  border-bottom : 3px solid white;
   cursor:pointer;
-`
+`;
 
 export const ListTitleDiv = styled.div`
-    margin: 0 auto;
     width: 1200px;
-`
+    margin: 0 auto;
+`;
 
 export const InputDiv = styled.div`
-    margin: 30px 0px 0px 0px;
+    display: flex;
     height: 50px;
+    margin: 30px 0px 0px 0px;
     box-shadow: 0 7px 15px -2px rgba(0,0,0,0.1);
+    background-color: white;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-    background-color: white;
-    display: flex;
     align-items: center;
 
     > svg {
-    margin: 15px;
     width: 100px;
     height: 20px;
+    margin: 15px;
     }
-`
+`;
 
 export const ContentWrap = styled.div`
     position: absolute;
@@ -56,10 +57,10 @@ export const ContentWrap = styled.div`
 `;
 
 export const SearchTitleDiv = styled.div`
+    display: flex;
     height: 60px;
     background-color: white;
-    display: flex;
-`
+`;
 
 export const TitleName = styled.div`
     padding: 30px 40px 0px;
@@ -69,4 +70,4 @@ export const TitleName = styled.div`
     flex-shrink: 1;
     flex-basis: 0;
     border-right: 1px solid #ded9d9;
-`
+`;

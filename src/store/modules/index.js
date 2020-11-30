@@ -1,9 +1,9 @@
 import { init } from '@rematch/core';
-import { search } from './Search';
+import search from './Search';
 
 const store = init({
   models: {
-    search: search
+    search
   }
 });
 
