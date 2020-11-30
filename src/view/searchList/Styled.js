@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Wrap = styled.div`
     display: flex;
@@ -12,14 +12,13 @@ export const ListWrap = styled.div`
     border-right: 1px solid #ded9d9;
     background-color: white;
     overflow: scroll;
-    padding: 0px 40px;
     & :hover {
         background-color: #eaeaea; 
       } 
 `
 export const ListDiv = styled.div`
     height: 30px;
-    padding: 10px 0;
+    padding: 10px 40px;
 `
 export const SearchBigName = styled.p`
   font-size : 15px;
