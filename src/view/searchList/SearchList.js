@@ -3,8 +3,7 @@ import { useSelector } from 'react-redux';
 import { Wrap, ListWrap, ListDiv, SearchBigName, SearchSmallName, SubwaySpan, SearchSameName } from './Styled';
 
 function SearchList({ searchValue }) {
-  const { subway, officetel, apt, list } = useSelector(list => list.search);
-  // console.log("LIST" , list)
+  const { subway, officetel, apt } = useSelector(list => list.search);
   return (
     <Wrap>
       <ListWrap >

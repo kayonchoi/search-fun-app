@@ -13,24 +13,20 @@ function Search() {
 
   const handleChage = e => {
     setInputValue(e.currentTarget.value);
-    if (inputValue === '') {
-      setClickInput(false);
-    } else {
-      setClickInput(true);
-    }
   };
 
   const handleBuried = () => {
     console.log("handleBuried");
-  }
+  };
 
   const handleParcelout = () => {
     console.log("handleParcelout");
-  }
+  };
 
   useEffect(() => {
     if (value !== '') {
       dispatch.search.findSearch({ keyword: value });
+      setClickInput(true);
     } else {
       dispatch.search.initState();
       setClickInput(false);

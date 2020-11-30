@@ -38,7 +38,7 @@ export const SearchSmallName = styled.pre`
 export const SubwaySpan = styled.span`
   border : 1px solid;
   background-color : ${props => props.color};
-  border-radius: 50%;
+  border-radius: 30%;
   color: white;
   margin: 0px 0px 0px 10px;
   font-size: 13px;
