@@ -9,10 +9,19 @@ export const ListWrap = styled.div`
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 0;
-    border-right: 1px solid #ded9d9;
     background-color: white;
     overflow: scroll;
 `;
+
+export const ListLocalWrap = styled.div`
+    height: 240px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    background-color: white;
+    overflow: scroll;
+    border-right: 1px solid #ded9d9;
+`
 
 export const ListDiv = styled.div`
     height: 30px;
@@ -23,8 +32,8 @@ export const ListDiv = styled.div`
 `;
 
 export const SearchBigName = styled.p`
-  font-size : 15px;
-  color : #312828;;
+  font-size : 13px;
+  color : #949494;
 `;
 
 export const SearchSameName = styled.span`
@@ -46,12 +55,4 @@ export const SubwaySpan = styled.span`
   border : 1px solid;
   background-color : ${props => props.color};
   border-radius: 30%;
-`;
-
-export const OneRoonSpan = styled.span`
-  float : right;
-  padding: 3px;
-  font-size: 11px;
-  border : 1px solid;
-  border-radius: 10px;
 `;

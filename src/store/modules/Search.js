@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const initState ={
+const initState = {
   oneRoom: [],
   officetel: [],
-  apt: []
-}
+  apt: [],
+};
 
 export default {
   state: initState,
@@ -17,21 +17,22 @@ export default {
       let tmpOfficetel = [];
       let tmpApt = [];
 
-      tmpSubway = payload.filter(data => data.complex_type === null );
+      tmpSubway = payload.filter(data => data.complex_type === null);
       tmpOfficetel = payload.filter(data => data.complex_type === 0);
       tmpApt = payload.filter(data => data.complex_type === 1);
 
-      return{
+      return {
         oneRoom: tmpSubway,
         officetel: tmpOfficetel,
         apt: tmpApt
       };
-    },
+    }
   },
   effects: dispatch => ({
     async findSearch(payload, rootState) {
       const { keyword } = payload;
       const res = await axios.get(`/api/3/loc/keyword?api_version=3.0.1&keyword=${keyword}`);
+      console.log(res)
       dispatch.search.findeSearchList(res.data);
     }
   })

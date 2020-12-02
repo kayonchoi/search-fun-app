@@ -7,7 +7,7 @@ export const Header = styled.div`
   position : relative;
 `;
 
-export const SearchInput = styled.input`
+export const SearchInputTag = styled.input`
     display: block;
     width: 1250px;
     margin:  0 auto;
@@ -56,7 +56,7 @@ export const ContentWrap = styled.div`
     top: 241px;
 `;
 
-export const SearchTitleDiv = styled.div`
+export const SearchTitleDiv = styled.ul`
     display: flex;
     height: 60px;
     background-color: white;
