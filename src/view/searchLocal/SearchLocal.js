@@ -5,13 +5,23 @@ function SearchLocal() {
   const localData = JSON.parse(localStorage.getItem('searchHistory')) ?? [];
   const localDataHistory = localData.reverse();
 
+  const handleLocalItem = data => {
+    console.log(data);
+
+    const sample =localDataHistory.findIndex(info => info.id === data.id);
+ 
+    console.log("@@@@" , sample)
+
+
+  };
+
   return (
     <Wrap>
       <ListLocalWrap>
         {localDataHistory?.map((data, idx) => {
           if (data.type === 'subway') {
             return (
-              <ListDiv key={idx}>
+              <ListDiv key={idx} onClick={() =>handleLocalItem(data)}>
                 <SearchSameName>{data.name}</SearchSameName>
                 {data.subways.map((subway, idx) => (
                   <SubwaySpan key={idx} color={subway.color}>{subway.shortName}</SubwaySpan>
@@ -21,14 +31,14 @@ function SearchLocal() {
           }
           if (data.type === 'region') {
             return (
-              <ListDiv key={idx}>
+              <ListDiv key={idx} onClick={() =>handleLocalItem(data)}>
                 <SearchSameName>{data.full_name}</SearchSameName>
                 {data.subways.map((subway, idx) => (
                   <SubwaySpan key={idx} color={subway.color}>{subway.shortName}</SubwaySpan>
                 ))}
               </ListDiv>
-            )
-          }
+            );
+          };
         })}
       </ListLocalWrap>
 
@@ -38,6 +48,6 @@ function SearchLocal() {
         </ListDiv>
       </ListLocalWrap>
     </Wrap>
-  )
+  );
 }
 export default SearchLocal;

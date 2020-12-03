@@ -2,22 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Wrap, ListWrap, ListDiv, SearchBigName, SearchSmallName, SubwaySpan, SearchSameName, OneRoonSpan } from './Styled';
 
-function SearchList({ searchValue }) {
+function SearchList({ searchValue, defaultInputValue }) {
   const { oneRoom, officetel, apt } = useSelector(list => list.search);
-  const localData = JSON.parse(localStorage.getItem('searchHistory'));
-  const [searchHistory, setSearchHistory] = useState(localData ? localData : []);
 
-  const handleItem = data => {
-    if (searchHistory.length === 0) {
-      setSearchHistory([data]);
-    } else {
-      setSearchHistory([...searchHistory, data]);
+  const handleListItem = data => {
+    const localData = JSON.parse(localStorage.getItem('searchHistory'));
+    const searchHistory = localData ? localData : [];
+    if (searchHistory.length >= 10) {
+      searchHistory.splice(0, 1);
     }
-  };
-
-  useEffect(() => {
+    searchHistory.push(data);
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
-  }, [searchHistory]);
+    // defaultInputValue();
+  };
 
   return (
     <Wrap>
@@ -25,7 +22,7 @@ function SearchList({ searchValue }) {
         {oneRoom.map((data, idx) => {
           if (data.type === 'subway') {
             return (
-              <ListDiv key={idx} onClick={() => handleItem(data)}>
+              <ListDiv key={idx} onClick={() => handleListItem(data)}>
                 <SearchSameName>{data.name}</SearchSameName>
                 {data.subways.map((subway, idx) => (
                   <SubwaySpan key={idx} color={subway.color}>{subway.shortName}</SubwaySpan>
@@ -36,7 +33,7 @@ function SearchList({ searchValue }) {
           }
           if (data.type === 'region') {
             return (
-              <ListDiv key={idx} onClick={() => handleItem(data)}>
+              <ListDiv key={idx} onClick={() => handleListItem(data)}>
                 <SearchSameName>{data.full_name}</SearchSameName>
                 {data.subways.map((subway, idx) => (
                   <SubwaySpan key={idx} color={subway.color}>{subway.shortName}</SubwaySpan>

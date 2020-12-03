@@ -24,7 +24,7 @@ export default {
       return {
         oneRoom: tmpSubway,
         officetel: tmpOfficetel,
-        apt: tmpApt
+        apt: tmpApt,
       };
     }
   },
@@ -32,7 +32,6 @@ export default {
     async findSearch(payload, rootState) {
       const { keyword } = payload;
       const res = await axios.get(`/api/3/loc/keyword?api_version=3.0.1&keyword=${keyword}`);
-      console.log(res)
       dispatch.search.findeSearchList(res.data);
     }
   })

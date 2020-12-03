@@ -71,3 +71,13 @@ export const TitleName = styled.div`
     flex-basis: 0;
     border-right: 1px solid #ded9d9;
 `;
+
+export const NoListPTag = styled.p`
+    padding: 30px;
+    text-align: center;
+`
+export const NoListDiv = styled.div`
+    width: 1200px;
+    margin: 0px auto;
+
+`
