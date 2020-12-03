@@ -1,27 +1,24 @@
 import React from 'react';
 import { Wrap, ListDiv, SearchBigName, ListLocalWrap, SearchSameName, SubwaySpan } from './Styled';
 
-function SearchLocal() {
+function SearchLocal({ defaultInputValue }) {
   const localData = JSON.parse(localStorage.getItem('searchHistory')) ?? [];
-  const localDataHistory = localData.reverse();
 
   const handleLocalItem = data => {
-    console.log(data);
-
-    const sample =localDataHistory.findIndex(info => info.id === data.id);
- 
-    console.log("@@@@" , sample)
-
-
+    const itemIdx = localData.findIndex(info => info.id === data.id);
+    localData.splice(itemIdx, 1);
+    localData.push(data);
+    localStorage.setItem('searchHistory', JSON.stringify(localData));
+    defaultInputValue();
   };
 
   return (
     <Wrap>
       <ListLocalWrap>
-        {localDataHistory?.map((data, idx) => {
+        {[...localData]?.reverse().map((data, idx) => {
           if (data.type === 'subway') {
             return (
-              <ListDiv key={idx} onClick={() =>handleLocalItem(data)}>
+              <ListDiv key={idx} onClick={() => handleLocalItem(data)}>
                 <SearchSameName>{data.name}</SearchSameName>
                 {data.subways.map((subway, idx) => (
                   <SubwaySpan key={idx} color={subway.color}>{subway.shortName}</SubwaySpan>
@@ -31,7 +28,7 @@ function SearchLocal() {
           }
           if (data.type === 'region') {
             return (
-              <ListDiv key={idx} onClick={() =>handleLocalItem(data)}>
+              <ListDiv key={idx} onClick={() => handleLocalItem(data)}>
                 <SearchSameName>{data.full_name}</SearchSameName>
                 {data.subways.map((subway, idx) => (
                   <SubwaySpan key={idx} color={subway.color}>{subway.shortName}</SubwaySpan>

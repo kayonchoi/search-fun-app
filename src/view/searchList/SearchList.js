@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Wrap, ListWrap, ListDiv, SearchBigName, SearchSmallName, SubwaySpan, SearchSameName, OneRoonSpan } from './Styled';
 
@@ -13,8 +13,30 @@ function SearchList({ searchValue, defaultInputValue }) {
     }
     searchHistory.push(data);
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
-    // defaultInputValue();
+    defaultInputValue();
   };
+
+
+  const findeSearch = (data) => {
+    const shortName = data.name.indexOf(searchValue);
+    const fullName = data.full_name.indexOf(searchValue);
+
+    const changeShortName = data.name.slice(shortName, shortName + 2);
+    const changeFullName = data.full_name.slice(fullName, fullName + 2);
+    // console.log(">changeShortName", changeShortName);
+    // console.log("@changeFullName", changeFullName);
+
+    return (
+      <>
+        {data.type === 'subway' ?
+          <SearchSameName>{data.name}</SearchSameName>
+          :
+          <SearchSameName>{data.full_name}</SearchSameName>
+        }
+      </>
+    )
+  }
+
 
   return (
     <Wrap>
@@ -23,7 +45,7 @@ function SearchList({ searchValue, defaultInputValue }) {
           if (data.type === 'subway') {
             return (
               <ListDiv key={idx} onClick={() => handleListItem(data)}>
-                <SearchSameName>{data.name}</SearchSameName>
+                {findeSearch(data)}
                 {data.subways.map((subway, idx) => (
                   <SubwaySpan key={idx} color={subway.color}>{subway.shortName}</SubwaySpan>
                 ))}
@@ -34,7 +56,7 @@ function SearchList({ searchValue, defaultInputValue }) {
           if (data.type === 'region') {
             return (
               <ListDiv key={idx} onClick={() => handleListItem(data)}>
-                <SearchSameName>{data.full_name}</SearchSameName>
+                {findeSearch(data)}
                 {data.subways.map((subway, idx) => (
                   <SubwaySpan key={idx} color={subway.color}>{subway.shortName}</SubwaySpan>
                 ))}

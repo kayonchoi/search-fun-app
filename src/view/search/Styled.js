@@ -73,11 +73,16 @@ export const TitleName = styled.div`
 `;
 
 export const NoListPTag = styled.p`
-    padding: 30px;
+    padding: 5px 30px;
     text-align: center;
 `
+
 export const NoListDiv = styled.div`
     width: 1200px;
     margin: 0px auto;
+`
 
+export const NoListTitle = styled.div`
+    padding-top: 24px;
+    text-align: center;
 `

@@ -4,7 +4,7 @@ import { useDebounce } from 'use-debounce';
 import { ReactComponent as SearchSVG } from '../../img/icon-search.svg';
 import SearchList from '../searchList/SearchList';
 import SearchLocal from '../searchLocal/SearchLocal';
-import { Header, SearchInputTag, SearchTitle, ListTitleDiv, InputDiv, SearchTitleDiv, TitleName, ContentWrap, NoListPTag, NoListDiv } from './Styled';
+import { Header, SearchInputTag, SearchTitle, NoListTitle, ListTitleDiv, InputDiv, SearchTitleDiv, TitleName, ContentWrap, NoListPTag, NoListDiv } from './Styled';
 
 function SearchInput() {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ function SearchInput() {
     setInputValue('');
     setOpen(false);
   };
-  
+
   const onMouseDown = e => {
     if (!container.current?.contains(e.target)) {
       defaultInputValue();
@@ -79,7 +79,9 @@ function SearchInput() {
                       쉬운 방찾기
                     </TitleName>
                   </SearchTitleDiv>
-                  <SearchLocal />
+                  <SearchLocal
+                    defaultInputValue={defaultInputValue}
+                  />
                 </ContentWrap>
               )}
               {mode === 'list' && (
@@ -103,7 +105,12 @@ function SearchInput() {
               {mode === 'nolist' && (
                 <ContentWrap>
                   <NoListDiv>
-                    <NoListPTag> 검색결과가 없습니다. </NoListPTag>
+                    <NoListTitle>
+                      검색결과가 없습니다.
+                      <NoListPTag>
+                          단어의 철자가 정확하지 확인해 보세요.
+                      </NoListPTag>
+                    </NoListTitle>
                   </NoListDiv>
                 </ContentWrap>
               )}
