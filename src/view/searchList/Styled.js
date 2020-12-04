@@ -17,19 +17,23 @@ export const ListWrap = styled.div`
 export const ListDiv = styled.div`
     height: 30px;
     padding: 10px 40px;
-    &:hover {
-        background-color: #eaeaea; 
-      } 
+      &:hover {
+          background-color: #eaeaea; 
+        } 
 `;
 
 export const SearchBigName = styled.p`
   font-size : 15px;
-  color : #312828;;
+  color : #312828;
 `;
 
-export const SearchSameName = styled.span`
+export const SearchSpanName = styled.span`
   color : #212125;
-  /* color: ${props => props.searchValue ?  '#212125' : '#4653b7'}; */
+  > span {
+    &.keywordName {
+      color: blue;
+    }
+  }
 `;
 
 export const SearchSmallName = styled.pre`

@@ -25,7 +25,7 @@ function SearchInput() {
     document.addEventListener('mousedown', onMouseDown, false);
   };
 
-  const defaultInputValue = () => {
+  const defaultView = () => {
     setMode('');
     setInputValue('');
     setOpen(false);
@@ -33,7 +33,7 @@ function SearchInput() {
 
   const onMouseDown = e => {
     if (!container.current?.contains(e.target)) {
-      defaultInputValue();
+      defaultView();
       document.removeEventListener('mousedown', onMouseDown);
     };
   };
@@ -50,7 +50,7 @@ function SearchInput() {
     setMode('roding');
     if (value !== '') {
       setOpen(true);
-      dispatch.search.findSearch({ keyword: value });
+      dispatch.search.findSearchApi({ keyword: value });
     } else {
       setOpen(false);
       dispatch.search.initState();
@@ -80,7 +80,7 @@ function SearchInput() {
                     </TitleName>
                   </SearchTitleDiv>
                   <SearchLocal
-                    defaultInputValue={defaultInputValue}
+                    defaultView={defaultView}
                   />
                 </ContentWrap>
               )}
@@ -98,8 +98,8 @@ function SearchInput() {
                     </TitleName>
                   </SearchTitleDiv>
                   <SearchList
-                    searchValue={value}
-                    defaultInputValue={defaultInputValue} />
+                    inputSearchValue={value}
+                    defaultView={defaultView} />
                 </ContentWrap>
               )}
               {mode === 'nolist' && (

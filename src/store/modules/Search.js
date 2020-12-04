@@ -29,7 +29,7 @@ export default {
     }
   },
   effects: dispatch => ({
-    async findSearch(payload, rootState) {
+    async findSearchApi(payload, rootState) {
       const { keyword } = payload;
       const res = await axios.get(`/api/3/loc/keyword?api_version=3.0.1&keyword=${keyword}`);
       dispatch.search.findeSearchList(res.data);

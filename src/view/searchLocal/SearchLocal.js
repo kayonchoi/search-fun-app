@@ -1,15 +1,15 @@
 import React from 'react';
 import { Wrap, ListDiv, SearchBigName, ListLocalWrap, SearchSameName, SubwaySpan } from './Styled';
 
-function SearchLocal({ defaultInputValue }) {
+function SearchLocal({ defaultView }) {
   const localData = JSON.parse(localStorage.getItem('searchHistory')) ?? [];
 
   const handleLocalItem = data => {
-    const itemIdx = localData.findIndex(info => info.id === data.id);
+    const itemIdx = localData.findIndex(info => info.name === data.name);
     localData.splice(itemIdx, 1);
     localData.push(data);
     localStorage.setItem('searchHistory', JSON.stringify(localData));
-    defaultInputValue();
+    defaultView();
   };
 
   return (
