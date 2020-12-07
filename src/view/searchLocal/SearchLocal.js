@@ -2,6 +2,7 @@ import React from 'react';
 import { Wrap, ListDiv, SearchBigName, ListLocalWrap, SearchSameName, SubwaySpan } from './Styled';
 
 function SearchLocal({ defaultView }) {
+  // ?? : null & undefined만 체크해준다. 
   const localData = JSON.parse(localStorage.getItem('searchHistory')) ?? [];
 
   const handleLocalItem = data => {
