@@ -20,9 +20,9 @@ function SearchLocal({ defaultView }) {
             return (
               <ListDiv key={idx} onClick={() => handleLocalItem(data)}>
                 <SearchSameName>{data.name}</SearchSameName>
-                {data.subways.map((subway, idx) => (
+                {data.subways.map((subway, idx) =>
                   <SubwaySpan key={idx} color={subway.color}>{subway.shortName}</SubwaySpan>
-                ))}
+                )}
               </ListDiv>
             );
           }
@@ -30,9 +30,9 @@ function SearchLocal({ defaultView }) {
             return (
               <ListDiv key={idx} onClick={() => handleLocalItem(data)}>
                 <SearchSameName>{data.full_name}</SearchSameName>
-                {data.subways.map((subway, idx) => (
+                {data.subways.map((subway, idx) =>
                   <SubwaySpan key={idx} color={subway.color}>{subway.shortName}</SubwaySpan>
-                ))}
+                )}
               </ListDiv>
             );
           };

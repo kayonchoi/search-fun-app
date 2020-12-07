@@ -16,6 +16,7 @@ function SearchList({ inputSearchValue, defaultView }) {
       defaultView();
     };
     if (searchHistory.length >= 10) { searchHistory.splice(0, 1); }
+    
     searchHistory.push(itemData);
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
     defaultView();
@@ -23,18 +24,15 @@ function SearchList({ inputSearchValue, defaultView }) {
 
   const SearchList = itemData => {
     const name = itemData.type === 'subway' ? itemData.name : itemData.full_name;
-    const regex = `${inputSearchValue}/gi`;
-    const regex2 = inputSearchValue + '/gi';
-
-    console.log(regex);
+    const regex = new RegExp(inputSearchValue, 'g');
     return (
-      <SearchSpanName dangerouslySetInnerHTML={{ __html: name.replace( regex2, showKeyword(inputSearchValue)) }}></SearchSpanName>
+      <SearchSpanName dangerouslySetInnerHTML={{ __html: name.replace(regex, showKeyword(inputSearchValue)) }}></SearchSpanName>
     );
   };
 
   const showKeyword = keyword => {
     return (
-      `<span class="keywordName">${keyword}</span>`
+      `<span class="keywordSearch">${keyword}</span>`
     );
   };
 
@@ -46,9 +44,9 @@ function SearchList({ inputSearchValue, defaultView }) {
             return (
               <ListDiv key={idx} onClick={() => handleListItem(data)}>
                 {SearchList(data)}
-                {data.subways.map((subway, idx) => (
+                {data.subways.map((subway, idx) =>
                   <SubwaySpan key={idx} color={subway.color}>{subway.shortName}</SubwaySpan>
-                ))}
+                )}
                 {data.filter && <OneRoonSpan>{data.filter.main_room_type_str}</OneRoonSpan>}
               </ListDiv>
             );
@@ -57,9 +55,9 @@ function SearchList({ inputSearchValue, defaultView }) {
             return (
               <ListDiv key={idx} onClick={() => handleListItem(data)}>
                 {SearchList(data)}
-                {data.subways.map((subway, idx) => (
+                {data.subways.map((subway, idx) =>
                   <SubwaySpan key={idx} color={subway.color}>{subway.shortName}</SubwaySpan>
-                ))}
+                )}
                 {data.filter && <OneRoonSpan>{data.filter.main_room_type_str}</OneRoonSpan>}
               </ListDiv>
             );
@@ -68,24 +66,23 @@ function SearchList({ inputSearchValue, defaultView }) {
       </ListWrap>
 
       <ListWrap>
-        {officetel.map((data, idx) => (
+        {officetel.map((data, idx) =>
           <ListDiv key={idx}>
             <SearchBigName>{data.name}</SearchBigName>
             <SearchSmallName>{data.complex_address}</SearchSmallName>
           </ListDiv>
-        ))}
+        )}
       </ListWrap>
 
       <ListWrap >
-        {apt.map((data, idx) => (
+        {apt.map((data, idx) =>
           <ListDiv key={idx}>
             <SearchBigName>{data.full_name}</SearchBigName>
             <SearchSmallName>{data.complex_address}</SearchSmallName>
           </ListDiv>
-        ))}
+        )}
       </ListWrap>
     </Wrap>
   );
 }
-
 export default SearchList;

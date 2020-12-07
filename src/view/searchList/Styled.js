@@ -30,7 +30,7 @@ export const SearchBigName = styled.p`
 export const SearchSpanName = styled.span`
   color : #212125;
   > span {
-    &.keywordName {
+    &.keywordSearch {
       color: blue;
     }
   }

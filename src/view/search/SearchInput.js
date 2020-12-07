@@ -32,6 +32,7 @@ function SearchInput() {
   };
 
   const onMouseDown = e => {
+    console.log(container.current)
     if (!container.current?.contains(e.target)) {
       defaultView();
       document.removeEventListener('mousedown', onMouseDown);
@@ -69,7 +70,7 @@ function SearchInput() {
           </InputDiv>
           {isOpen && (
             <>
-              {mode === 'default' && (
+              {mode === 'default' &&
                 <ContentWrap>
                   <SearchTitleDiv>
                     <TitleName>
@@ -83,8 +84,8 @@ function SearchInput() {
                     defaultView={defaultView}
                   />
                 </ContentWrap>
-              )}
-              {mode === 'list' && (
+              }
+              {mode === 'list' &&
                 <ContentWrap>
                   <SearchTitleDiv>
                     <TitleName>
@@ -101,26 +102,26 @@ function SearchInput() {
                     inputSearchValue={value}
                     defaultView={defaultView} />
                 </ContentWrap>
-              )}
-              {mode === 'nolist' && (
+              }
+              {mode === 'nolist' &&
                 <ContentWrap>
                   <NoListDiv>
                     <NoListTitle>
                       검색결과가 없습니다.
                       <NoListPTag>
-                          단어의 철자가 정확하지 확인해 보세요.
+                        단어의 철자가 정확하지 확인해 보세요.
                       </NoListPTag>
                     </NoListTitle>
                   </NoListDiv>
                 </ContentWrap>
-              )}
-              {mode === 'roding' && (
+              }
+              {mode === 'roding' &&
                 <ContentWrap>
                   <NoListDiv>
                     <NoListPTag> roading.... </NoListPTag>
                   </NoListDiv>
                 </ContentWrap>
-              )}
+              }
             </>
           )}
         </div>
@@ -128,6 +129,4 @@ function SearchInput() {
     </Header>
   );
 }
-
 export default SearchInput;
-
